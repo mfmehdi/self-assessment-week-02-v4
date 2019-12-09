@@ -14,6 +14,7 @@ var getData = function() {
     contentType: 'application/json',
     success: function(data) {
       processData(data); // eslint-disable-line no-use-before-define
+      console.log(data)
     },
     error: function(data) {
       $('#error').prepend(' oh no').append('!');
@@ -104,6 +105,8 @@ var displayData = function(data, user) {
   });
 };
 
+
+//postData is the function responsible for sending messages/******
 var postData = function(message, username) {
   $.ajax({
     url: SERVER_URL,
@@ -114,6 +117,7 @@ var postData = function(message, username) {
       text: message
     }),
     success: function(data) {
+    getData();//**** every time when we click on submit directily get all data without waiting 7.5 s
       console.log('Success!', data);
     },
     error: function(data) {
